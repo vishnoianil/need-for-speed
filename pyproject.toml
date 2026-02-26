@@ -1,0 +1,20 @@
+[project]
+name = "need-for-speed"
+version = "0.1.0"
+description = "Kernel Comparison — Triton vs Mojo on A100"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.1.0",
+    "triton>=3.0.0",
+    "numpy",
+    "pytest>=7.0",
+    "tabulate",
+    "modular==26.1.0"
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v"
+
+[tool.uv.pip]
+extra-index-url = ["https://modular.gateway.scarf.sh/simple/"]

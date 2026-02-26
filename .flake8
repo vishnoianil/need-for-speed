@@ -1,0 +1,12 @@
+[flake8]
+max-line-length = 120
+# C408 ignored because we like the dict keyword argument syntax
+# E501 is not flexible enough, we're using B950 instead
+ignore =
+    E731,
+per-file-ignores =
+    __init__.py: F401
+optional-ascii-coding = True
+exclude =
+    ./.git,
+    ./venv,

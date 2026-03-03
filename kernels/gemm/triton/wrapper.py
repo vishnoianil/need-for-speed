@@ -6,7 +6,7 @@ from kernels.gemm.triton.kernels.matmul import matmul_kernel
 
 
 @torch.compile(fullgraph=True)
-def matmul(a: torch.Tensor, b: torch.Tensor) -> torch.Tensor:
+def matmul_tiled(a: torch.Tensor, b: torch.Tensor) -> torch.Tensor:
     """Compute matrix multiplication C = A @ B using the Triton GEMM kernel.
 
     Args:
@@ -62,7 +62,7 @@ def main():
     M, K, N = 128, 128, 128
     a = torch.randn((M, K), dtype=torch.bfloat16, device="cuda")
     b = torch.randn((K, N), dtype=torch.bfloat16, device="cuda")
-    c = matmul(a, b)
+    c = matmul_tiled(a, b)
     print("Output shape:", c.shape)
     print("Output:", c)
 
